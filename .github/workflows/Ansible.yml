@@ -19,8 +19,8 @@ jobs:
       - name: Run a multi-line script
         run: |
           ls -lrt
-          export ACCESS_KEY=${{ vars.ACCESS_KEY}}
-          export SECRET_KEY=${{ vars.SECRET_KEY}}
+          export ACCESS_KEY=${{ vars.ACCESS_KEY }}
+          export SECRET_KEY=${{ vars.SECRET_KEY }}
           echo $ACCESS_KEY
           sudo apt update
           sudo apt upgrade -y
