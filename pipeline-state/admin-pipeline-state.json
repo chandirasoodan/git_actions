@@ -1,8 +1,0 @@
-{
-  "CLUSTERNAME": "ekstest-cluster",
-  "NAMESPACE": "ekstest-namespace",
-  "USERNAME": "admin",
-  "MANIFEST_REPO": "chandirasoodan",
-  "createeks": "success",
-  "fluxconfig": "failed"
-}
