@@ -212,11 +212,11 @@ jobs:
           --token-auth \
           --kubeconfig=/tmp/kubeconfig \
           # --owner=${{ github.event.inputs.OwnerName }} \
-          --owner=Kirti160598
-          --repository=flux-with-helm
+          --owner=Kirti160598 \
+          --repository=flux-with-helm \
           # --repository=${{ github.event.inputs.OwnerName }}/${{ github.event.inputs.ManifestRepo }} \
           # --branch=${{ github.event.inputs.BranchName }} \
-          --branch=main
+          --branch=main \
           --path=clusters/staging/ \
           --personal
           flux get all
