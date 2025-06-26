@@ -2,7 +2,7 @@
   "CLUSTERNAME": "default-cluster",
   "NAMESPACE": "default-namespace",
   "USERNAME": "admin",
-  "MANIFEST_REPO": "cluster_manifests",
+  "MANIFEST_REPO": "chandirasoodan",
   "createeks": "success",
   "fluxconfig": "failed"
 }
