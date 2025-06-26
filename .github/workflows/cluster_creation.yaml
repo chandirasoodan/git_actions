@@ -33,7 +33,7 @@ on:
       OwnerName:
         description: 'Owner Name'
         required: true
-        default: 'chandirasoodan'
+        default: 'Kirti160598'
       ManifestRepo:
         description: 'Manifest Repo Name'
         required: true
