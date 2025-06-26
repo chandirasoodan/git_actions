@@ -1,6 +1,6 @@
 {
-  "CLUSTERNAME": "default-cluster",
-  "NAMESPACE": "default-namespace",
+  "CLUSTERNAME": "ekstest-cluster",
+  "NAMESPACE": "ekstest-namespace",
   "USERNAME": "admin",
   "MANIFEST_REPO": "chandirasoodan",
   "createeks": "success",
