@@ -256,29 +256,32 @@ jobs:
       #     --personal
       #     flux get all
 
-      - name: Update state file for flux-config as failure
-        if: ${{ failure() }}
-        run: |
-          cd git_actions
-          jq '.fluxconfig = "failed"' ./pipeline-state/${{ github.event.inputs.UserName }}-pipeline-state.json > tmp.json && mv tmp.json ./pipeline-state/${{ github.event.inputs.UserName }}-pipeline-state.json
+
+
+
+      # - name: Update state file for flux-config as failure
+      #   if: ${{ failure() }}
+      #   run: |
+      #     cd git_actions
+      #     jq '.fluxconfig = "failed"' ./pipeline-state/${{ github.event.inputs.UserName }}-pipeline-state.json > tmp.json && mv tmp.json ./pipeline-state/${{ github.event.inputs.UserName }}-pipeline-state.json
           
-        shell: bash
+      #   shell: bash
 
-      - name: Update state file for flux-config as Success
-        if: ${{ success() }}
-        run: |
-          cd git_actions
-          jq '.fluxconfig = "success"' ./pipeline-state/${{ github.event.inputs.UserName }}-pipeline-state.json > tmp.json && mv tmp.json ./pipeline-state/${{ github.event.inputs.UserName }}-pipeline-state.json
-        shell: bash
+      # - name: Update state file for flux-config as Success
+      #   if: ${{ success() }}
+      #   run: |
+      #     cd git_actions
+      #     jq '.fluxconfig = "success"' ./pipeline-state/${{ github.event.inputs.UserName }}-pipeline-state.json > tmp.json && mv tmp.json ./pipeline-state/${{ github.event.inputs.UserName }}-pipeline-state.json
+      #   shell: bash
 
-      - name: upload json to Repo
-        if: ${{ always() }}
-        run: |
-          cd git_actions
-          git add .
-          git commit -m "added json"
-          git remote set-url origin https://x-access-token:${{ vars.TOKEN }}@github.com/chandirasoodan/git_actions.git
-          git push
-        env:
-          GITHUB_TOKEN: ${{ vars.TOKEN }}
+      # - name: upload json to Repo
+      #   if: ${{ always() }}
+      #   run: |
+      #     cd git_actions
+      #     git add .
+      #     git commit -m "added json"
+      #     git remote set-url origin https://x-access-token:${{ vars.TOKEN }}@github.com/chandirasoodan/git_actions.git
+      #     git push
+      #   env:
+      #     GITHUB_TOKEN: ${{ vars.TOKEN }}
 
