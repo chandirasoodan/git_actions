@@ -1,0 +1,7 @@
+{
+  "CLUSTERNAME": "default-cluster-01",
+  "NAMESPACE": "default-namespace",
+  "USERNAME": "admin",
+  "MANIFEST_REPO": "flux-with-helm",
+  "createeks": "success"
+}
