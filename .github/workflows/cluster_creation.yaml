@@ -194,9 +194,9 @@ jobs:
       - name: flux-bootstarp
         id: flux-bootstarp
         run: |
-          export TOKEN=${{ vars.TOKEN }}
-          export GITHUB_TOKEN=${{ vars.TOKEN }}
-          echo 'GITHUB_TOKEN=${{ vars.TOKEN }}' | sudo tee -a /etc/environment
+          export TOKEN=${{ vars.K_TOKEN }}
+          export GITHUB_TOKEN=${{ vars.K_TOKEN }}
+          echo 'GITHUB_TOKEN=${{ vars.K_TOKEN }}' | sudo tee -a /etc/environment
           aws eks update-kubeconfig \
             --region $AWS_REGION \
             --name ${{ github.event.inputs.ClusterName }} \
