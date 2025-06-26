@@ -225,6 +225,7 @@ jobs:
 
           flux get all
 
+
       # - name: flux-bootstarp
       #   id: flux-bootstarp
       #   run: |
