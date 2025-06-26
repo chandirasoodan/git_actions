@@ -3,5 +3,6 @@
   "NAMESPACE": "default-namespace",
   "USERNAME": "admin",
   "MANIFEST_REPO": "flux-with-helm",
-  "createeks": "success"
+  "createeks": "success",
+  "fluxconfig": "failed"
 }
