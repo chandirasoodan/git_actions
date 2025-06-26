@@ -191,35 +191,69 @@ jobs:
           fi
         shell: bash
 
-      - name: flux-bootstarp
-        id: flux-bootstarp
+      - name: flux-bootstrap
+        id: flux-bootstrap
         run: |
           export TOKEN=${{ vars.K_TOKEN }}
           export GITHUB_TOKEN=${{ vars.K_TOKEN }}
           echo 'GITHUB_TOKEN=${{ vars.K_TOKEN }}' | sudo tee -a /etc/environment
+
           aws eks update-kubeconfig \
             --region $AWS_REGION \
             --name ${{ github.event.inputs.ClusterName }} \
             --kubeconfig /tmp/kubeconfig
+
           export KUBECONFIG=/tmp/kubeconfig
           kubectl get svc
-          sudo apt-get update && sudo apt-get install lsof
+
+          sudo apt-get update && sudo apt-get install -y lsof
           lsof -i :8080 || echo "No process using port 8080"
+
           sudo chown $(id -u):$(id -g) /tmp/kubeconfig
           chmod 777 /tmp/kubeconfig
+
           flux uninstall --namespace=flux-system --keep-namespace=true --silent
+
           flux bootstrap github \
-          --token-auth \
-          --kubeconfig=/tmp/kubeconfig \
-          # --owner=${{ github.event.inputs.OwnerName }} \
-          --owner=Kirti160598 \
-          --repository=flux-with-helm \
-          # --repository=${{ github.event.inputs.OwnerName }}/${{ github.event.inputs.ManifestRepo }} \
-          # --branch=${{ github.event.inputs.BranchName }} \
-          --branch=main \
-          --path=clusters/staging/ \
-          --personal
+            --token-auth \
+            --kubeconfig=/tmp/kubeconfig \
+            --owner=Kirti160598 \
+            --repository=flux-with-helm \
+            --branch=main \
+            --path=clusters/staging \
+            --personal
+
           flux get all
+
+      # - name: flux-bootstarp
+      #   id: flux-bootstarp
+      #   run: |
+      #     export TOKEN=${{ vars.K_TOKEN }}
+      #     export GITHUB_TOKEN=${{ vars.K_TOKEN }}
+      #     echo 'GITHUB_TOKEN=${{ vars.K_TOKEN }}' | sudo tee -a /etc/environment
+      #     aws eks update-kubeconfig \
+      #       --region $AWS_REGION \
+      #       --name ${{ github.event.inputs.ClusterName }} \
+      #       --kubeconfig /tmp/kubeconfig
+      #     export KUBECONFIG=/tmp/kubeconfig
+      #     kubectl get svc
+      #     sudo apt-get update && sudo apt-get install lsof
+      #     lsof -i :8080 || echo "No process using port 8080"
+      #     sudo chown $(id -u):$(id -g) /tmp/kubeconfig
+      #     chmod 777 /tmp/kubeconfig
+      #     flux uninstall --namespace=flux-system --keep-namespace=true --silent
+      #     flux bootstrap github \
+      #     --token-auth \
+      #     --kubeconfig=/tmp/kubeconfig \
+      #     # --owner=${{ github.event.inputs.OwnerName }} \
+      #     --owner=Kirti160598 \
+      #     --repository=flux-with-helm \
+      #     # --repository=${{ github.event.inputs.OwnerName }}/${{ github.event.inputs.ManifestRepo }} \
+      #     # --branch=${{ github.event.inputs.BranchName }} \
+      #     --branch=main \
+      #     --path=clusters/staging/ \
+      #     --personal
+      #     flux get all
 
       - name: Update state file for flux-config as failure
         if: ${{ failure() }}
