@@ -162,9 +162,9 @@ jobs:
           ls -lrt
           cd git_actions
           ls
-          cd ./pipeline-state
+          cd pipeline-state
           ls -lrt
-          aws s3 cp ./pipeline-state/ s3://akash-buc-test-42/ --recursive
+          aws s3 cp ./ s3://akash-buc-test-42/ --recursive
       
 
   flux-config:
