@@ -160,7 +160,7 @@ jobs:
         continue-on-error: true
         run: |
           ls -lrt
-          cd ../../
+          cd git_actions
           ls
           cd ./pipeline-state
           ls -lrt
