@@ -151,15 +151,15 @@ jobs:
           cd git_actions
           git add .
           git commit -m "added json"
-          git remote set-url origin https://x-access-token:${{ vars.TOKEN }}@github.com/chandirasoodan/git_actions.git
+          git remote set-url origin https://x-access-token:${{ vars.K_TOKEN }}@github.com/chandirasoodan/git_actions.git
           git push
         env:
-          GITHUB_TOKEN: ${{ vars.TOKEN }}
+          GITHUB_TOKEN: ${{ vars.K_TOKEN }}
 
       - name: upload json to s3 bucket
         continue-on-error: true
         run: |
-          aws s3 cp ./pipeline-state/${{ github.event.inputs.UserName }}-pipeline-state.json s3://akash-buc-test-42/ --recursive
+          aws s3 cp ./pipeline-state/ s3://akash-buc-test-42/ --recursive
       
 
   flux-config:
