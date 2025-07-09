@@ -160,6 +160,8 @@ jobs:
         continue-on-error: true
         run: |
           ls -lrt
+          cd ../../
+          ls
           cd ./pipeline-state
           ls -lrt
           aws s3 cp ./pipeline-state/ s3://akash-buc-test-42/ --recursive
